@@ -1,4 +1,4 @@
-package ru.fintech.qa.homework.db.client;
+package ru.fintech.qa.homework.db.hibernate.client;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

@@ -21,31 +21,35 @@ public class Place {
         return id;
     }
 
-    public final void setId(final int id) {
-        this.id = id;
+    public final Place setId(final int id1) {
+        this.id = id1;
+        return this;
     }
 
     public final int getRow() {
         return row;
     }
 
-    public final void setRow(final int row) {
-        this.row = row;
+    public final Place setRow(final int row1) {
+        this.row = row1;
+        return this;
     }
 
     public final int getPlaceNum() {
         return placeNum;
     }
 
-    public final void setPlaceNum(final int placeNum) {
-        this.placeNum = placeNum;
+    public final Place setPlaceNum(final int placeNum1) {
+        this.placeNum = placeNum1;
+        return this;
     }
 
     public final String getName() {
         return name;
     }
 
-    public final void setName(final String name) {
-        this.name = name;
+    public final Place setName(final String name1) {
+        this.name = name1;
+        return this;
     }
 }

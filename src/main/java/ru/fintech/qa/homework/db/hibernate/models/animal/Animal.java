@@ -25,47 +25,53 @@ public class Animal {
         return id;
     }
 
-    public final void setId(final int id) {
-        this.id = id;
+    public final Animal setId(final int id1) {
+        this.id = id1;
+        return this;
     }
 
     public final String getName() {
         return name;
     }
 
-    public final void setName(final String name) {
-        this.name = name;
+    public final Animal setName(final String name1) {
+        this.name = name1;
+        return this;
     }
 
     public final int getAge() {
         return age;
     }
 
-    public final void setAge(final int age) {
-        this.age = age;
+    public final Animal setAge(final int age1) {
+        this.age = age1;
+        return this;
     }
 
     public final int getType() {
         return type;
     }
 
-    public final void setType(final int type) {
-        this.type = type;
+    public final Animal setType(final int type1) {
+        this.type = type1;
+        return this;
     }
 
     public final int getSex() {
         return sex;
     }
 
-    public final void setSex(final int sex) {
-        this.sex = sex;
+    public final Animal setSex(final int sex1) {
+        this.sex = sex1;
+        return this;
     }
 
     public final int getPlace() {
         return place;
     }
 
-    public final void setPlace(final int place) {
-        this.place = place;
+    public final Animal setPlace(final int place1) {
+        this.place = place1;
+        return this;
     }
 }

@@ -21,31 +21,35 @@ public class Workman {
         return id;
     }
 
-    public final void setId(final int id) {
-        this.id = id;
+    public final Workman setId(final int id1) {
+        this.id = id1;
+        return this;
     }
 
     public final String getName() {
         return name;
     }
 
-    public final void setName(final String name) {
-        this.name = name;
+    public final Workman setName(final String name1) {
+        this.name = name1;
+        return this;
     }
 
     public final int getAge() {
         return age;
     }
 
-    public final void setAge(final int age) {
-        this.age = age;
+    public final Workman setAge(final int age1) {
+        this.age = age1;
+        return this;
     }
 
     public final int getPosition() {
         return position;
     }
 
-    public final void setPosition(final int position) {
-        this.position = position;
+    public final Workman setPosition(final int position1) {
+        this.position = position1;
+        return this;
     }
 }

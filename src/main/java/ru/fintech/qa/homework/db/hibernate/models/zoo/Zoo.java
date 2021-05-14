@@ -17,15 +17,17 @@ public class Zoo {
         return id;
     }
 
-    public final void setId(final int id) {
-        this.id = id;
+    public final Zoo setId(final int id1) {
+        this.id = id1;
+        return this;
     }
 
     public final String getName() {
         return name;
     }
 
-    public final void setName(final String name) {
-        this.name = name;
+    public final Zoo setName(final String name1) {
+        this.name = name1;
+        return this;
     }
 }

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.fintech.qa.homework.db.client.DbClient;
+import ru.fintech.qa.homework.db.hibernate.client.DbClient;
 import ru.fintech.qa.homework.db.hibernate.DbHibernateService;
 import ru.fintech.qa.homework.db.hibernate.models.animal.Animal;
 import ru.fintech.qa.homework.db.hibernate.models.place.Place;
@@ -17,6 +17,7 @@ import javax.persistence.PersistenceException;
 
 public class ServiceTests {
     private Session session;
+    private final SessionFactory sessionFactory = DbClient.getSessionFactory();
 
     @BeforeAll
     public static void beforeAll() {
@@ -25,7 +26,6 @@ public class ServiceTests {
 
     @BeforeEach
     public final void beforeEach() {
-        SessionFactory sessionFactory = DbClient.getSessionFactory();
         session = sessionFactory.openSession();
     }
 
@@ -45,13 +45,13 @@ public class ServiceTests {
         int erCount = 0;
         Animal animal;
         for (int i = 1; i < 11; i++) {
-            animal = new Animal();
-            animal.setId(i);
-            animal.setName("test");
-            animal.setAge(2);
-            animal.setType(1);
-            animal.setSex(1);
-            animal.setPlace(1);
+            animal = new Animal()
+                    .setId(i)
+                    .setName("test")
+                    .setAge(2)
+                    .setType(1)
+                    .setSex(1)
+                    .setPlace(1);
             try {
                 session.beginTransaction();
                 session.save(animal);
@@ -66,11 +66,11 @@ public class ServiceTests {
     @Test
     public void nullNameWorkmanTest() {
         boolean flag = false;
-        Workman workman = new Workman();
-        workman.setId(7);
-        workman.setName(null);
-        workman.setAge(23);
-        workman.setPosition(1);
+        Workman workman = new Workman()
+                .setId(7)
+                .setName(null)
+                .setAge(23)
+                .setPosition(1);
         try {
             session.beginTransaction();
             session.save(workman);
@@ -83,11 +83,11 @@ public class ServiceTests {
 
     @Test
     public void placeCountAfterInsertTest() {
-        Place place = new Place();
-        place.setId(6);
-        place.setRow(1);
-        place.setPlaceNum(185);
-        place.setName("test");
+        Place place = new Place()
+                .setId(6)
+                .setRow(1)
+                .setPlaceNum(185)
+                .setName("test");
         session.beginTransaction();
         session.save(place);
         session.getTransaction().commit();
@@ -103,9 +103,9 @@ public class ServiceTests {
             flag = false;
         }
         try {
-            session.createNativeQuery("SELECT * FROM zoo WHERE \"name\" = 'Центральный'").getSingleResult();
-            session.createNativeQuery("SELECT * FROM zoo WHERE \"name\" = 'Северный'").getSingleResult();
-            session.createNativeQuery("SELECT * FROM zoo WHERE \"name\" = 'Западный'").getSingleResult();
+            DbHibernateService.getZooByName("Центральный", session);
+            DbHibernateService.getZooByName("Северный", session);
+            DbHibernateService.getZooByName("Западный", session);
         } catch (NoResultException e) {
             flag = false;
         }
